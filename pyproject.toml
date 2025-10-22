@@ -1,0 +1,45 @@
+[project]
+name = "label-studio-dummy-ml-backend"
+version = "0.1.0"
+description = "A minimal dummy ML backend for Label Studio using UV package manager"
+readme = "README.md"
+requires-python = ">=3.12.11"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = ["label-studio", "machine-learning", "ml-backend", "dummy-model"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    # Base dependencies
+    "gunicorn==23.0.0",
+    "flask>=3.0",
+    "flask-cors>=6.0",
+    "redis>=6.0",
+    "xmljson>=0.2",
+    # Label Studio ML dependencies
+    # Note: label-studio-ml must be installed separately after uv sync:
+    # uv pip install --no-deps "label-studio-ml @ git+https://github.com/HumanSignal/label-studio-ml-backend.git"
+    "label-studio-sdk>=2.0",
+    "semver>=3.0",
+    "colorama>=0.4",
+    "appdirs>=1.4",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
